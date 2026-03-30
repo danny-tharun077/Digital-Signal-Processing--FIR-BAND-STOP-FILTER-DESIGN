@@ -19,7 +19,32 @@ Step 5: Plot the magnitude spectrum with x-label and y-label with suitable title
 Step 6: Terminate the program.
 
 ## PROGRAM: 
+~~~
+clc; % clear screen
+clear all; % clear screen
+close all; % close all figure windows
+Wc1=input('enter the value of Wc1=');
+Wc2=input('enter the value of Wc2=');
+N=input('enter the value of N=');
+alpha=(N-1)/2;
+eps=0.001;
+%Band Pass Filter Coefficient
+n=0:1:N-1;
+hd=(sin(Wc1*(n-alpha+eps))-sin(Wc2*(n-alpha+eps)))./((n-alpha+eps)*pi)
+%Blackman Window Sequence
+n=0:1:N-1;
+wh=0.42-0.5*cos((2*pi*n)/(N-1))+0.08*cos((4*pi*n)/(N-1))
+hn=hd.*wh
+% Plot the Band Stop Filter with Blackman Window Technique
+w=0:0.01:pi;
+h=freqz(hn,1,w);
+plot(w/pi,abs(h),'blue');
+~~~
 
 ## OUTPUT:
+<img width="1449" height="1286" alt="image" src="https://github.com/user-attachments/assets/bd3b11e8-6414-4788-8c90-e263328f6ed9" />
+
 
 ## RESULT:
+<img width="1244" height="481" alt="image" src="https://github.com/user-attachments/assets/5fe69ee2-3ede-40b3-8342-9f04b74f0976" />
+
